@@ -1,0 +1,26 @@
+alpha1=var('α1')
+alpha2=var('α2')
+alpha3=var('α3')
+alpha4=var('α4')
+beta1=var('β1')
+beta2=var('β2')
+beta3=var('β3')
+beta4=var('β4')
+s1=vector([1,alpha1,1])
+s2=vector([alpha2,1,1])
+s3=vector([-1,alpha3,1])
+s4=vector([alpha4,-1,1])
+t1=vector([1,beta1,1])
+t2=vector([beta2,1,1])
+t3=vector([-1,beta3,1])
+t4=vector([beta4,-1,1])
+S1=(2+alpha2+alpha4+alpha3*(alpha2-alpha4)) * s1
+S2=(2+alpha1+alpha3+alpha4*(alpha1-alpha3)) * s2
+S3=(2-alpha4-alpha2+alpha1*(alpha4-alpha2)) * s3
+S4=(2-alpha3-alpha1+alpha2*(alpha3-alpha1)) * s4
+T1=(2+beta2+beta4+beta3*(beta2-beta4)) * t1
+T2=(2+beta1+beta3+beta4*(beta1-beta3)) * t2
+T3=(2-beta4-beta2+beta1*(beta4-beta2)) * t3
+T4=(2-beta3-beta1+beta2*(beta3-beta1)) * t4
+omega=(S1-S2).tensor_product(T2)+S3.tensor_product(T3)+S2.tensor_product(T1)
+factor(-2*omega[2,2]+omega[0,0]+omega[0,1]+omega[1,0]-omega[1,1])
